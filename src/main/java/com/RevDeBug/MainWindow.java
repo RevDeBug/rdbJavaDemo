@@ -1,5 +1,7 @@
 package com.RevDeBug;
 
+import CarsEconomy.Cars;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +18,9 @@ public class MainWindow {
     private JLabel helloPanelContent;
     private JPanel demoJPanel;
     private JLabel demoPanelContent;
+    private JLabel exceptionsPanelContent;
     private JButton executeButton;
+    private JButton exceptionExecuteButton;
 
 
     public MainWindow()
@@ -34,13 +38,15 @@ public class MainWindow {
         tabbedPane1 = new JTabbedPane();
         demoJPanel = new JPanel();
         helloJPanel = new JPanel(gridBagLayout);
-        ExceptionsJPanel = new JPanel();
+        ExceptionsJPanel = new JPanel(gridBagLayout);
         ThreadsJPanel = new JPanel();
         LoopsJPanel = new JPanel();
         executeButton = new JButton();
+        exceptionExecuteButton = new JButton();
 
         demoPanelContent = new JLabel();
         helloPanelContent = new JLabel();
+        exceptionsPanelContent = new JLabel();
 
         tabbedPane1.setPreferredSize(new Dimension(690, 290));
         UIManager.getDefaults().put("TabbedPane.contentBorderInsets", new Insets(0,0,0,0));
@@ -52,31 +58,41 @@ public class MainWindow {
         tabbedPane1.add("Threads", ThreadsJPanel);
         tabbedPane1.add("Loops", LoopsJPanel);
 
-        GridBagConstraints demoGridBagConst = new GridBagConstraints();
-        demoGridBagConst.gridx = 0;
-        demoGridBagConst.gridy = 0;
-
         demoJPanel.add(demoPanelContent);
-        helloJPanel.add(helloPanelContent, demoGridBagConst);
-        demoGridBagConst.gridy = 1;
+        demoPanelContent.setText("<html>RevDeBug is a solution that improves the effectiveness of root cause detection and elimination of bugs.<br>" +
+                "Provided examples will help you learn how to use our Reverse debugger as efficient as possible.<br>" +
+                "Click on one of the buttons and you will get further instructions.</html>");
+
+        GridBagConstraints helloGridBagConst = new GridBagConstraints();
+        helloGridBagConst.gridx = 0;
+        helloGridBagConst.gridy = 0;
+
+        helloJPanel.add(helloPanelContent, helloGridBagConst);
+        helloGridBagConst.gridy = 1;
+        helloJPanel.add(executeButton, helloGridBagConst);
+        executeButton.setText("Execute");
+        helloPanelContent.setText("<html>This example will introduce you to basic ideas of reverse debbuging.<br>" +
+                "Click on Execute button and stop debugging. Your recording will be loaded automatically.<br>" +
+                "Follow instructions in comments.</html>");
+
+        GridBagConstraints exceptionsGridBagConst = new GridBagConstraints();
+        exceptionsGridBagConst.gridx = 0;
+        exceptionsGridBagConst.gridy = 0;
+
+        ExceptionsJPanel.add(exceptionsPanelContent, exceptionsGridBagConst);
+        exceptionsGridBagConst.gridy = 1;
+        ExceptionsJPanel.add(exceptionExecuteButton, exceptionsGridBagConst);
+        exceptionExecuteButton.setText("Execute");
+        exceptionsPanelContent.setText("<html>This example will throw an exception.<br>" +
+                "No worries, it is expected.<br>" +
+                "Click on execute and find out how to fix bugs with RevDeBug.</html>");
 
         mainPanel.add(tabbedPane1);
-        helloJPanel.add(executeButton, demoGridBagConst);
 
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-
-        executeButton.setText("Execute");
-
-        demoPanelContent.setText("<html>RevDeBug is a solution that improves the effectiveness of root cause detection and elimination of bugs.<br>" +
-                "Provided examples will help you learn how to use our Reverse debugger as efficient as possible.<br>" +
-                "Click on one of the buttons and you will get further instructions.</html>");
-
-        helloPanelContent.setText("<html>This example will introduce you to basic ideas of reverse debbuging.<br>" +
-                "Click on Execute button and stop debugging. Your recording will be loaded automatically.<br>" +
-                "Follow instructions in comments.</html>");
 
         executeButton.addActionListener(new ActionListener() {
             @Override
@@ -98,6 +114,14 @@ public class MainWindow {
                                 (currentHour >= 22 && currentHour < 6) ? "Night" : "Morning";
 
                 helloPanelContent.setText("Good " + when + " " + who + " !");
+            }
+        });
+
+        exceptionExecuteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Cars cars = new Cars();
+                cars.Calculate();
             }
         });
     }
