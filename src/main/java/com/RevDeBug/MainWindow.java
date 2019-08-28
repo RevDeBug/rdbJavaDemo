@@ -1,6 +1,7 @@
 package com.RevDeBug;
 
 import CarsEconomy.Cars;
+import MultiThread.MyThread;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,8 +20,12 @@ public class MainWindow {
     private JPanel demoJPanel;
     private JLabel demoPanelContent;
     private JLabel exceptionsPanelContent;
+    private JLabel threadPanelContent;
     private JButton executeButton;
     private JButton exceptionExecuteButton;
+    private JButton threadExecuteButton;
+    private JList threadMessageList;
+    private JScrollPane threadMessageScrollPane;
 
 
     public MainWindow()
@@ -34,19 +39,26 @@ public class MainWindow {
         gridBagLayout.rowHeights = new int[]{0, 0};
         gridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 
+        DefaultListModel<String> messages = new DefaultListModel<String>();
+
         mainPanel = new JPanel();
         tabbedPane1 = new JTabbedPane();
         demoJPanel = new JPanel();
         helloJPanel = new JPanel(gridBagLayout);
         ExceptionsJPanel = new JPanel(gridBagLayout);
-        ThreadsJPanel = new JPanel();
+        ThreadsJPanel = new JPanel(gridBagLayout);
         LoopsJPanel = new JPanel();
         executeButton = new JButton();
         exceptionExecuteButton = new JButton();
+        threadExecuteButton = new JButton();
 
         demoPanelContent = new JLabel();
         helloPanelContent = new JLabel();
         exceptionsPanelContent = new JLabel();
+        threadPanelContent = new JLabel();
+
+        threadMessageList = new JList(messages);
+        threadMessageScrollPane = new JScrollPane(threadMessageList);
 
         tabbedPane1.setPreferredSize(new Dimension(690, 290));
         UIManager.getDefaults().put("TabbedPane.contentBorderInsets", new Insets(0,0,0,0));
@@ -87,6 +99,20 @@ public class MainWindow {
                 "No worries, it is expected.<br>" +
                 "Click on execute and find out how to fix bugs with RevDeBug.</html>");
 
+        GridBagConstraints threadGridBagConst = new GridBagConstraints();
+        threadGridBagConst.gridx = 0;
+        threadGridBagConst.gridy = 0;
+
+        ThreadsJPanel.add(threadPanelContent, threadGridBagConst);
+        threadGridBagConst.gridy = 1;
+        ThreadsJPanel.add(threadMessageScrollPane, threadGridBagConst);
+        threadGridBagConst.gridy = 2;
+        ThreadsJPanel.add(threadExecuteButton, threadGridBagConst);
+        threadExecuteButton.setText("Execute");
+        threadPanelContent.setText("<html>Following sample will run 30 threads parallel.<br>" +
+                        "After debugging, when your recording is loaded open Threads view from RevDeBug menu,<br>" +
+                        "to see, how consequent threads was executed.</html>");
+
         mainPanel.add(tabbedPane1);
 
         frame.setContentPane(mainPanel);
@@ -122,6 +148,20 @@ public class MainWindow {
             public void actionPerformed(ActionEvent e) {
                 Cars cars = new Cars();
                 cars.Calculate();
+            }
+        });
+
+        threadExecuteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                messages.clear();
+                int threadCount = 30;
+                for(int threadNo = 0; threadNo < threadCount; threadNo++)
+                {
+                    Thread newThread = new MyThread(messages);
+                    newThread.setName(threadNo + 1 + "");
+                    newThread.start();
+                }
             }
         });
     }
