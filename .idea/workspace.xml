@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1fa4492-d6fd-498b-aa26-6de6e365bab9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/MultiThread/MyThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loops/Looper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/RevDeBug/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/RevDeBug/MainWindow.java" afterDir="false" />
     </list>

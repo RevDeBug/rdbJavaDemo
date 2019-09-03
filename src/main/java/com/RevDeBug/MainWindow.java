@@ -1,6 +1,7 @@
 package com.RevDeBug;
 
 import CarsEconomy.Cars;
+import Loops.Looper;
 import MultiThread.MyThread;
 
 import javax.swing.*;
@@ -26,6 +27,10 @@ public class MainWindow {
     private JButton threadExecuteButton;
     private JList threadMessageList;
     private JScrollPane threadMessageScrollPane;
+    private JLabel loopsPanelContent;
+    private JList loopsCarsList;
+    private JScrollPane loopsCarsScrollPane;
+    private JButton loopsExecuteButton;
 
 
     public MainWindow()
@@ -33,13 +38,14 @@ public class MainWindow {
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame();
         frame.setTitle("RevDeBug Demo");
-        frame.setPreferredSize(new Dimension(700, 300));
+        frame.setPreferredSize(new Dimension(700, 350));
 
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.rowHeights = new int[]{0, 0};
         gridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 
         DefaultListModel<String> messages = new DefaultListModel<String>();
+        DefaultListModel<String> cars = new DefaultListModel<String>();
 
         mainPanel = new JPanel();
         tabbedPane1 = new JTabbedPane();
@@ -47,7 +53,7 @@ public class MainWindow {
         helloJPanel = new JPanel(gridBagLayout);
         ExceptionsJPanel = new JPanel(gridBagLayout);
         ThreadsJPanel = new JPanel(gridBagLayout);
-        LoopsJPanel = new JPanel();
+        LoopsJPanel = new JPanel(gridBagLayout);
         executeButton = new JButton();
         exceptionExecuteButton = new JButton();
         threadExecuteButton = new JButton();
@@ -60,7 +66,12 @@ public class MainWindow {
         threadMessageList = new JList(messages);
         threadMessageScrollPane = new JScrollPane(threadMessageList);
 
-        tabbedPane1.setPreferredSize(new Dimension(690, 290));
+        loopsCarsList = new JList(cars);
+        loopsCarsScrollPane = new JScrollPane(loopsCarsList);
+        loopsPanelContent = new JLabel();
+        loopsExecuteButton = new JButton();
+
+        tabbedPane1.setPreferredSize(new Dimension(690, 310));
         UIManager.getDefaults().put("TabbedPane.contentBorderInsets", new Insets(0,0,0,0));
         UIManager.getDefaults().put("TabbedPane.tabsOverlapBorder", true);
 
@@ -113,6 +124,19 @@ public class MainWindow {
                         "After debugging, when your recording is loaded open Threads view from RevDeBug menu,<br>" +
                         "to see, how consequent threads was executed.</html>");
 
+        GridBagConstraints loopsGridBagConst = new GridBagConstraints();
+        loopsGridBagConst.gridx = 0;
+        loopsGridBagConst.gridy = 0;
+
+        LoopsJPanel.add(loopsPanelContent, loopsGridBagConst);
+        loopsGridBagConst.gridy = 1;
+        LoopsJPanel.add(loopsCarsScrollPane, loopsGridBagConst);
+        loopsGridBagConst.gridy = 2;
+        LoopsJPanel.add(loopsExecuteButton, loopsGridBagConst);
+        loopsExecuteButton.setText("Execute");
+        loopsPanelContent.setText("<html>Learn how you can easily jump through next iterations of loops with RevDeBug.<br>" +
+                "Hit Execute, stop debugging and find out how RevDeBugs helps with loops.</html>");
+
         mainPanel.add(tabbedPane1);
 
         frame.setContentPane(mainPanel);
@@ -162,6 +186,18 @@ public class MainWindow {
                     newThread.setName(threadNo + 1 + "");
                     newThread.start();
                 }
+            }
+        });
+
+        loopsExecuteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cars.clear();
+                Looper looper = new Looper();
+                looper.CollectCars().forEach((item) ->
+                {
+                    cars.addElement(item);
+                });
             }
         });
     }
