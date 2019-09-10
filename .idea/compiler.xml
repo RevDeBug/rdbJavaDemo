@@ -2,10 +2,17 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
+      <profile name="Annotation profile for RDBDemo" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <option name="applicationName" value="rdbJavaDemo" />
+        <option name="recordingMode" value="CrashRecorder" />
+        <option name="recordServerAddress" value="[SERVER_ADDRESS]" />
+        <option name="recordServerPort" value="42734" />
+        <option name="repositoryPath" value="[STORAGE_PATH]" />
+        <option name="solutionName" value="rdbJavaDemo" />
+        <option name="uploadMetadata" value="true" />
         <module name="RDBDemo" />
       </profile>
     </annotationProcessing>
@@ -15,7 +22,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="RDBDemo" options="-processor compiler8.ast.RevDeBugProcessor -verbose -Xlint:all,-options,-path" />
+      <module name="RDBDemo" options="-processor compiler8.ast.RevDeBugProcessor -ArecordServerAddress=[SERVER_ADDRESS] -ArecordServerPort=42734 -ArecordingMode=CrashRecorder -AapplicationName=rdbJavaDemo -AsolutionName=rdbJavaDemo -ArepositoryPath=[STORAGE_PATH] -AuploadMetadata=true" />
     </option>
   </component>
 </project>
