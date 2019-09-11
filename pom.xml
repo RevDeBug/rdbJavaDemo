@@ -27,6 +27,11 @@
             <artifactId>RevDeBug</artifactId>
             <version>5.1</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.vincenzopalazzo</groupId>
+            <artifactId>material-ui-swing</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

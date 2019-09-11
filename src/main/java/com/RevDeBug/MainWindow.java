@@ -3,8 +3,14 @@ package com.RevDeBug;
 import CarsEconomy.Cars;
 import Loops.Looper;
 import MultiThread.MyThread;
+import mdlaf.MaterialLookAndFeel;
+import mdlaf.themes.MaterialDarkTheme;
+import mdlaf.themes.MaterialLiteTheme;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,6 +41,12 @@ public class MainWindow {
 
     public MainWindow()
     {
+        try {
+            UIManager.setLookAndFeel(new MaterialLookAndFeel());
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame();
         frame.setTitle("RevDeBug Demo");
@@ -65,9 +77,11 @@ public class MainWindow {
 
         threadMessageList = new JList(messages);
         threadMessageScrollPane = new JScrollPane(threadMessageList);
+        threadMessageScrollPane.setPreferredSize(new Dimension(350, 150));
 
         loopsCarsList = new JList(cars);
         loopsCarsScrollPane = new JScrollPane(loopsCarsList);
+        loopsCarsScrollPane.setPreferredSize(new Dimension(350, 100));
         loopsPanelContent = new JLabel();
         loopsExecuteButton = new JButton();
 
@@ -80,6 +94,14 @@ public class MainWindow {
         tabbedPane1.add("Exceptions", ExceptionsJPanel);
         tabbedPane1.add("Threads", ThreadsJPanel);
         tabbedPane1.add("Loops", LoopsJPanel);
+
+        tabbedPane1.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                messages.clear();
+                cars.clear();
+            }
+        });
 
         demoJPanel.add(demoPanelContent);
         demoPanelContent.setText("<html>RevDeBug is a solution that improves the effectiveness of root cause detection and elimination of bugs.<br>" +
