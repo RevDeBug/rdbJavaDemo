@@ -50,6 +50,7 @@ public class MainWindow {
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame();
         frame.setTitle("RevDeBug Demo");
+        frame.setResizable(false);
         frame.setPreferredSize(new Dimension(700, 350));
 
         GridBagLayout gridBagLayout = new GridBagLayout();
