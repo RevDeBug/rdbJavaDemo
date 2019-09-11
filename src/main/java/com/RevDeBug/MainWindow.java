@@ -95,8 +95,7 @@ public class MainWindow {
         helloJPanel.add(executeButton, helloGridBagConst);
         executeButton.setText("Execute");
         helloPanelContent.setText("<html>This example will introduce you to basic ideas of reverse debbuging.<br>" +
-                "Click on Execute button and stop debugging. Your recording will be loaded automatically.<br>" +
-                "Follow instructions in comments.</html>");
+                "Click on Execute button and stop debugging.</html>");
 
         GridBagConstraints exceptionsGridBagConst = new GridBagConstraints();
         exceptionsGridBagConst.gridx = 0;
@@ -120,9 +119,7 @@ public class MainWindow {
         threadGridBagConst.gridy = 2;
         ThreadsJPanel.add(threadExecuteButton, threadGridBagConst);
         threadExecuteButton.setText("Execute");
-        threadPanelContent.setText("<html>Following sample will run 30 threads parallel.<br>" +
-                        "After debugging, when your recording is loaded open Threads view from RevDeBug menu,<br>" +
-                        "to see, how consequent threads was executed.</html>");
+        threadPanelContent.setText("<html>Following sample will run 30 threads parallel.</html>");
 
         GridBagConstraints loopsGridBagConst = new GridBagConstraints();
         loopsGridBagConst.gridx = 0;
