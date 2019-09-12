@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f1fa4492-d6fd-498b-aa26-6de6e365bab9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/RevDeBug/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/RevDeBug/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MultiThread/MyThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MultiThread/MyThread.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +27,7 @@
   <component name="ProjectId" id="1PglgZJLxIyanwc5bQxKXWU5Ob2" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="19" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />

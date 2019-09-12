@@ -21,8 +21,15 @@ public class MyThread extends Thread{
         _random = new Random();
         int charHeight = 0;
         int threadID = Integer.parseInt(Thread.currentThread().getName());
-        int max = 1000 + 20 * threadID;
-        messages.addElement("Thread " + Thread.currentThread().getName() + " will process loop " + max + "times");
+        String threadName = Thread.currentThread().getName();
+        int max = (100000 + 20) * threadID;
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                messages.addElement("Thread " + threadName + " will process loop " + max + "times");
+            }
+        });
 
         while (_number < max)
         {
@@ -33,7 +40,13 @@ public class MyThread extends Thread{
                 charHeight = getCharHeight();
             }
         }
-        messages.addElement("Thread " + Thread.currentThread().getName() + " has ended.");
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                messages.addElement("Thread " + threadName + " has ended.");
+            }
+        });
     }
 
     private int getCharHeight()
