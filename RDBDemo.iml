@@ -11,8 +11,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.revdebug:compiler8:5.1" level="project" />
-    <orderEntry type="library" name="Maven: com.revdebug:RevDeBug:5.1" level="project" />
+    <orderEntry type="library" name="Maven: com.revdebug:compiler8:5.1.1" level="project" />
+    <orderEntry type="library" name="Maven: com.revdebug:RevDeBug:5.1.1" level="project" />
     <orderEntry type="library" name="Maven: io.github.vincenzopalazzo:material-ui-swing:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.swinglabs:swingx:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.jhlabs:filters:2.0.235" level="project" />
