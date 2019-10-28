@@ -166,6 +166,7 @@ public class MainWindow {
 
         executeButton.addActionListener(new ActionListener() {
             @Override
+            @RevDeBug.Annotation.Exclude
             public void actionPerformed(ActionEvent e) {
                 if(executeButton.getText().equals("Close"))
                 {
@@ -176,14 +177,7 @@ public class MainWindow {
                     executeButton.setText("Close");
                 }
 
-                String who = System.getProperty("user.name");
-                int currentHour = LocalDateTime.now().getHour();
-
-                String when = (currentHour >= 12 && currentHour < 18) ? "Afternoon" :
-                        (currentHour >= 18 && currentHour < 22) ? "Evening" :
-                                (currentHour >= 22 && currentHour < 6) ? "Night" : "Morning";
-
-                helloPanelContent.setText("Good " + when + " " + who + " !");
+                HelloRDB();
             }
         });
 
@@ -220,6 +214,17 @@ public class MainWindow {
                 });
             }
         });
+    }
+
+    private void HelloRDB() {
+        String who = System.getProperty("user.name");
+        int currentHour = LocalDateTime.now().getHour();
+
+        String when = (currentHour >= 12 && currentHour < 18) ? "Afternoon" :
+                (currentHour >= 18 && currentHour < 22) ? "Evening" :
+                        (currentHour >= 22 && currentHour < 6) ? "Night" : "Morning";
+
+        helloPanelContent.setText("Good " + when + " " + who + " !");
     }
 
     public static void main(String[] args) {
