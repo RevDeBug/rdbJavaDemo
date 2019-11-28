@@ -166,7 +166,6 @@ public class MainWindow {
 
         executeButton.addActionListener(new ActionListener() {
             @Override
-            @RevDeBug.Annotation.Exclude
             public void actionPerformed(ActionEvent e) {
                 if(executeButton.getText().equals("Close"))
                 {
