@@ -20,12 +20,12 @@
         <dependency>
             <groupId>com.revdebug</groupId>
             <artifactId>compiler8</artifactId>
-            <version>5.2.0</version>
+            <version>5.2.3</version>
         </dependency>
         <dependency>
             <groupId>com.revdebug</groupId>
             <artifactId>RevDeBug</artifactId>
-            <version>5.2.0</version>
+            <version>5.2.3</version>
         </dependency>
         <dependency>
             <groupId>io.github.vincenzopalazzo</groupId>
