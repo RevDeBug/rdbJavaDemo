@@ -43,8 +43,6 @@
                     <version>3.8.1</version>
                     <configuration>
                         <compilerArgs>
-                            <arg>-processor</arg>
-                            <arg>compiler8.ast.RevDeBugProcessor</arg>
                             <arg>-ArecordServerAddress=[SERVER_ADDRESS]</arg>
                             <arg>-ArecordServerPort=42734</arg>
                             <arg>-ArecordingMode=CrashRecorder</arg>
