@@ -12,7 +12,7 @@
         <repository>
             <id>rdb-repo</id>
             <name>RevDeBug Maven Repo</name>
-            <url>https://maven.revdebug.com</url>
+            <url>https://release.revdebug.com/repository/maven</url>
         </repository>
     </repositories>
 
@@ -20,12 +20,13 @@
         <dependency>
             <groupId>com.revdebug</groupId>
             <artifactId>compiler</artifactId>
-            <version>6.4.0</version>
+            <version>6.6.10</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.revdebug</groupId>
             <artifactId>RevDeBug</artifactId>
-            <version>6.4.0</version>
+            <version>6.6.10</version>
         </dependency>
         <dependency>
             <groupId>io.github.vincenzopalazzo</groupId>
